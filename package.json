@@ -11,7 +11,9 @@
   "dependencies": {
     "logfmt": "~1.1.2",
     "express": "~4.2.0",
-    "ejs": "~1.0.0"
+    "ejs": "~1.0.0",
+    "body-parser": "~1.2.0",
+    "parse":"~1.2.x"
   },
   "engines": {
     "node": "0.10.x"
