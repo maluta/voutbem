@@ -21,36 +21,18 @@ app.use(function(request, response, next) {
   next();
 });
 
+/* routes */
+app.get('/', routes.index );
+app.get('/add', routes.add);
+app.get('/event/:id', routes.eventsId);
 
 
-/* GET */
-
-app.get('/', function(req, res){
-  res.render('index', { title: '' });
-  console.log(req.body); 
-});
-
-app.get('/add', function(req, res){
-  var d = new Date();
-  var today = d.getDate();
-  var month = d.getMonth() + 1; // january is 0
-  res.render('add', { date: "Ex.: amanhã, dia " + today + "/"+ month });
-});
-
-app.get("/events/:id", function(req, res) {
-  res.end("events, " + req.params.id + ".");
-  // Fun fact: this has security issues
-});
-
-/* POST */
-
-app.post("/events", function(req, res) {
-  res.send(req.body.who + ", vai organizar: " + req.body.what + " lembrando que: " + req.body.info);
-});
+app.post('/events', routes.events);
+app.post('/guests/:id', routes.guests);
 
 
 app.all('*', function(req, res){
-  res.send(404);
+  res.send(404,":(");
 })
 
 var port = Number(process.env.PORT || 5000);

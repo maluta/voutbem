@@ -1,0 +1,88 @@
+  <!DOCTYPE html>
+  <html>
+      <head>
+      <title>Voutbém!</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="Tiago Maluta">
+
+      <link href="../css/bootstrap.min.css" rel="stylesheet">
+      <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+      <link href="../css/theme.css" rel="stylesheet">
+      
+  </head>
+
+
+   <body role="document">
+
+      <!-- Fixed navbar -->
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Voutbém!</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/add">Novo evento</a></li>
+              <li><a href="http://www.twitter.com/maluta">Created by @maluta</a></li>
+              
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+
+      <div class="container theme-showcase" role="main">
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+     <h5>organizado por <span class="label label-info"><%= event_author %></span> .</h5>
+     
+        
+          <h1><%= event_title %></h1>
+          
+        <div class="jumbotron">
+        <%= event_info %>
+        <%= event_id %>
+        </div>
+        <form class="navbar-form navbar-left" id="guestform" name="guestform" method="POST" action="/guests/<%= event_id %>">
+        <div class="row">
+        <div class="col-lg-6">
+        <div class="input-group">
+        <input type="text" class="form-control" id="guestname" name="guestname">
+        <span class="input-group-btn">
+          <button class="btn btn-success" type="submit" id="voutbemBtn" name="voutbemBtn">Vou tbém!</button>
+        </span>
+        </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        </form>
+        <h5><span class="label label-warning">Confirmados:</span> <%= event_guests %></h5>
+        <div class="page-header">
+        </div>
+
+   </div> <!-- /container -->
+
+
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="../js/bootstrap.min.js"></script>
+      <script>
+
+      $('#guestform').submit(function() {
+          $('#voutbemBtn').prop('disabled',true);
+      }); 
+      </script>
+
+
+    </body>
+  </html>

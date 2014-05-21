@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Voutbém!</a>
+          <a class="navbar-brand" href="#">Voutbém!</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -43,17 +43,17 @@
     <div class="container theme-showcase" role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Como?</h1>
-        <p>Crie <i>eventos</i> e compartilhe com seus amigos no Whatsapp.</p>
-        <p>Os eventos criados duram até 30 horas e depois são apagados.</p>
-        <p>Simples e prático: sem login, senha...</p>
-        </p>
-        <form method="post">
-        <p><a href="/add" class="btn btn-primary btn-lg" role="button" id="eventBtn">Criar evento &raquo;</a></p>
-        </form>
-      </div>
-
+   <div class="page-header">
+        <h4>Wow! existe um novo evento aí :)</h4>
+   </div>
+   <p>
+        <%= user %>, compartilhe com seus amigos:
+<div class="jumbotron">
+        <small><a href="http://voutbem.herokuapp.com/event/<%= eventId %>">http://voutbem.herokuapp.com/event/<%= eventId %></a></small>
+    </div>
+    <!-- <h5>Agora</span> <button type="button" id="copyBtn" class="btn btn-lg btn-danger">copie</button> e compartilhe.</h5> -->
+    O <i>link</i> do evento estará disponível por 30 horas, depois será automaticamente apagado. 
+    
       <!-- <div class="page-header">
         <h1>Buttons</h1>
       </div>

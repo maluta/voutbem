@@ -57,7 +57,7 @@
           <h1> <span class="label label-success">Novo</span> evento</h1>
         </div>
     
-    <form class="navbar-form navbar-left" id="event-form" name="event_form" method="POST" action="/events">
+    <form class="navbar-form navbar-left" id="eventform" name="event_form" method="POST" action="/events">
     <div class="form-group input-group-lg">
     
      <div class="input-group form-group">
@@ -77,12 +77,25 @@
      <span class="input-group-addon">Informações</span>
      <textarea class="form-control" rows="6" placeholder="<%= date %>" name="info" id="info" ></textarea>
      </div>
-     <p></p> 
-     <button type="submit" value="Criar" class="form-control btn btn-lg btn-primary">Criar</button>
+     <p></p>
+     
+    <!-- <div class="btn-group dropup form-group">
+    <button type="button" class="btn btn-default">Inserir</button>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu"> -->
+    <!-- Dropdown menu links -->
+    <!-- <li><a href="#">Data</a></li>
+    <li><a href="#">Geolocation</a></li>
+    <li><a href="#"></a></li>
+    </ul>
+    </div> -->
+
+     <button type="submit" id="createEvent" value="Criar" class="form-control btn btn-lg btn-primary">Criar</button>
     </div>
   </form>  
-    
-
   </div> <!-- /container -->
 
       <!-- Bootstrap core JavaScript
@@ -90,6 +103,10 @@
       <!-- Placed at the end of the document so the pages load faster -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
-  
+      <script>
+      $('#eventform').submit(function() {
+          $('#createEvent').prop('disabled',true);
+      }); 
+      </script>
     </body>
   </html>
