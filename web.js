@@ -30,6 +30,7 @@ app.get('/event/:id', routes.eventsId);
 app.post('/events', routes.events);
 app.post('/guests/:id', routes.guests);
 
+setInterval(function() { routes.triggerEvents(); }, 30*60*60*1000)
 
 app.all('*', function(req, res){
   res.send(404,":(");

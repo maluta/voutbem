@@ -3,9 +3,45 @@ var config = require('./config');
 var Parse = require("parse").Parse;
 Parse.initialize(config.keyApp,config.keyJS);
 
+Date.prototype.addHours= function(h){
+    this.setHours(this.getHours()+h);
+    return this;
+}
+
+exports.triggerEvents = function() {
+ 
+ var query = new Parse.Query("Events");
+ query.ascending("createdAt"); // os mais antigos primeiro
+
+ query.limit(20);
+ 
+ query.find({
+  success: function(events) {
+    for (var i = 0; i < events.length; i++) {
+      // This does not require a network access.
+      //console.log(events[i].createdAt <= events[i].createdAt.addHours(30));
+      if ((events[i].createdAt <= events[i].createdAt.addHours(30)) === false) { // while createAt < 30 
+           events[i].destroy({
+  				success: function(myObject) {
+    			// The object was deleted from the Parse Cloud.
+    			//console.log("ds");
+  			},
+  				error: function(myObject, error) {
+    			// The delete failed.
+    			// error is a Parse.Error with an error code and description.
+    			console.log("de");
+  				}
+  			});
+      }    
+    }
+  }
+});
+
+}
+
 exports.index = function(req, res){
   res.render('index', { title: '' });
-  console.log(req.body); 
+  //console.log(req.body); 
 };
 
 exports.add = function(req, res){
@@ -20,7 +56,7 @@ exports.eventsId = function(req, res) {
    var query = new Parse.Query("Events");
    query.get(req.params.id, {
             success: function(object) {
-                 console.log("success");
+                 //console.log("success");
                  /* mostrar quem esta indo */
                  
                  //res.send(200,"o evento existe :-) " + object.get("author"));
@@ -43,7 +79,7 @@ exports.eventsId = function(req, res) {
 
 /* POST */
 exports.guests = function(req, res, next) {
-   console.log("ok --> req" + req.body.guestname + "." + req.originalUrl);
+ 
    var event_id = req.originalUrl.split("/")[2];
 
    var query = new Parse.Query("Events");
@@ -90,7 +126,7 @@ exports.events = function(req, res) {
   e.save(null, {
             success: function(post) {
                 // The post was saved successfully.
-                console.log("success" + e.id);
+                //console.log("success" + e.id);
                 res.render('event_share',{ user:event_author,eventId:e.id} );
             },
              error: function(error) {
