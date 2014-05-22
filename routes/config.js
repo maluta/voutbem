@@ -1,2 +1,2 @@
-exports.keyApp = ENV['PARSE_APP']
-exports.keyJS = ENV['PARSE_JS']
+exports.keyApp = process.env.PARSE_APP;
+exports.keyJS = process.env.PARSE_JS;
