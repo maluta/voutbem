@@ -31,7 +31,7 @@ app.get('/event/:id', routes.eventsId);
 app.post('/events', routes.events);
 app.post('/guests/:id', routes.guests);
 
-setInterval(function() { routes.triggerEvents(); }, 30*60*60*1000);
+setInterval(function() { routes.triggerEvents(); }, 10*60*60*1000); /* check every 10 hours */
 
 app.all('*', function(req, res){
   res.send(404,":(");

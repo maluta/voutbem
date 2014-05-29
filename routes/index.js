@@ -17,16 +17,13 @@ exports.triggerEvents = function() {
  query.ascending('createdAt'); // os mais antigos primeiro
 
  query.limit(20);
- 
+
  query.find({
   success: function(events) {
     for (var i = 0; i < events.length; i++) {
       // This does not require a network access.
       //console.log(events[i].createdAt <= events[i].createdAt.addHours(30));
-      console.log('----');
-      console.log(events[i].createdAt);
-      console.log(events[i].createdAt.addHours(30));
-      if ((events[i].createdAt <= events[i].createdAt.addHours(30)) === false) { // while createAt < 30 
+      if ((events[i].createdAt <= events[i].createdAt.addHours(30))) { // while createAt < 30 
        events[i].destroy({
         success: function(myObject) {
     			// The object was deleted from the Parse Cloud.
